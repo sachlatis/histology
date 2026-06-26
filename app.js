@@ -67,20 +67,22 @@
   function buildImageCandidates(id) {
     const safeId = encodeURIComponent(id).replace(/%2F/gi, "/");
     const hasExtension = /\.(jpe?g|png|webp|gif|avif)$/i.test(id);
-
+  
     if (hasExtension) {
       return [`images/${safeId}`];
     }
-
+  
     return [
-      `images/${safeId}.jpeg`,
-      `images/${safeId}.jpg`,
       `images/${safeId}.png`,
+      `images/${safeId}.PNG`,
+      `images/${safeId}.jpeg`,
+      `images/${safeId}.JPEG`,
+      `images/${safeId}.jpg`,
+      `images/${safeId}.JPG`,
       `images/${safeId}.webp`,
-      `images/${safeId}.gif`,
-      `images/${safeId}.avif`
+      `images/${safeId}.WEBP`
     ];
-  }
+  }  
 
   function loadCardImage(card) {
     imageCandidates = buildImageCandidates(card.id);
