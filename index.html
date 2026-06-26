@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="Image-based histology flashcards">
+  <title>IstoLab Flashcards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">IL</div>
+      <div>
+        <h1>IstoLab Flashcards</h1>
+        <p>Image-based revision</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <label for="categorySelect" class="sr-only">Category</label>
+      <select id="categorySelect" title="Choose category"></select>
+      <button id="resetButton" class="button button-quiet" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="status-panel" aria-label="Study progress">
+      <div class="progress-copy">
+        <span id="progressText">Card 1 of 1</span>
+        <span id="scoreText">Known 0 · Review 0</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section id="flashcard" class="flashcard" aria-live="polite">
+      <div class="image-frame">
+        <img id="cardImage" alt="Flashcard image">
+        <button id="zoomButton" class="zoom-button" type="button" aria-label="Enlarge image">⌕</button>
+        <div id="imageError" class="image-error" hidden>
+          Image not found. Check that its filename matches the image ID.
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div class="card-label-row">
+          <span id="categoryBadge" class="badge">Histology</span>
+          <span id="cardId" class="card-id"></span>
+        </div>
+
+        <p class="eyebrow">Question</p>
+        <h2 id="questionText"></h2>
+
+        <div id="answerArea" class="answer-area" hidden>
+          <p class="eyebrow">Answer</p>
+          <p id="answerText" class="answer-text"></p>
+        </div>
+
+        <div class="actions">
+          <button id="showAnswerButton" class="button button-primary" type="button">
+            See answer
+          </button>
+
+          <div id="ratingButtons" class="rating-buttons" hidden>
+            <button id="againButton" class="button button-review" type="button">
+              Study again
+            </button>
+            <button id="knownButton" class="button button-known" type="button">
+              I knew it
+            </button>
+          </div>
+        </div>
+
+        <p class="keyboard-help">
+          Keyboard: <kbd>Space</kbd> reveal · <kbd>1</kbd> study again · <kbd>2</kbd> knew it
+        </p>
+      </div>
+    </section>
+
+    <section id="completePanel" class="complete-panel" hidden>
+      <div class="complete-icon" aria-hidden="true">✓</div>
+      <h2>Session complete</h2>
+      <p id="completeSummary"></p>
+      <button id="restartButton" class="button button-primary" type="button">
+        Study again
+      </button>
+    </section>
+  </main>
+
+  <dialog id="imageDialog" class="image-dialog">
+    <button id="closeDialogButton" class="dialog-close" type="button" aria-label="Close">×</button>
+    <img id="zoomedImage" alt="Enlarged flashcard image">
+  </dialog>
+
+  <noscript>This site requires JavaScript to display the flashcards.</noscript>
+  <script src="cards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
